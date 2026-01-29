@@ -40,13 +40,11 @@ public class JsonHandler implements Persistence {
     public ATMState loadATMState() {
         try {
             JSONObject obj = new JSONObject(Files.readString(Paths.get(ATM_FILE)));
-            return new ATMState(
-                    obj.getDouble("cash"),
-                    obj.getString("firmware"),
-                    new PaperTank(obj.getInt("paper"))
-            );
+            // REMOVED: Loading firmware version and paper tank (V2 features)
+            return new ATMState(obj.getDouble("cash"));
         } catch (Exception e) {
-            return new ATMState(2000, "v1.0", new PaperTank(10));
+            // REMOVED: Paper tank initialization (V2 feature)
+            return new ATMState(2000);
         }
     }
 
@@ -55,8 +53,7 @@ public class JsonHandler implements Persistence {
         try {
             JSONObject obj = new JSONObject();
             obj.put("cash", state.getCashAvailable());
-            obj.put("firmware", state.getFirmwareVersion());
-            obj.put("paper", state.getPaperTank().getSheets());
+            // REMOVED: Saving firmware version and paper tank (V2 features)
             Files.writeString(Paths.get(ATM_FILE), obj.toString(2));
         } catch (Exception ignored) {}
     }
