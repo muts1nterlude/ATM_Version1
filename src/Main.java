@@ -36,7 +36,7 @@ public class Main {
     private static void displayWelcomeScreen() {
         System.out.println("\n");
         System.out.println("====================================");
-        System.out.println("    ATM SYSTEM V1 - VIEW ONLY       ");
+        System.out.println("         ATM SYSTEM V1        ");
         System.out.println("     SOLID Principles Demo         ");
         System.out.println("====================================");
         System.out.println("\nThis is a read-only demonstration.");
@@ -49,7 +49,7 @@ public class Main {
      */
     private static void demonstrateCustomerView() {
         System.out.println("\n========== CUSTOMER SERVICE (READ-ONLY) ==========");
-        System.out.println("Auto-authenticating customer with demo credentials...\n");
+        System.out.println("Auto-authenticating customer...\n");
         
         // Auto-authenticate with demo account
         if (atm.authenticate("1234567890", "1234")) {
